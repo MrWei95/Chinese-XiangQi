@@ -1,3 +1,0 @@
-D:/Desktop/ChineseXiangQi/build/CMakeFiles/XiangQi.dir
-D:/Desktop/ChineseXiangQi/build/CMakeFiles/ALL_BUILD.dir
-D:/Desktop/ChineseXiangQi/build/CMakeFiles/ZERO_CHECK.dir

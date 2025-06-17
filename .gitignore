@@ -1,0 +1,11 @@
+# ===================== #
+# Visual Studio files   #
+# ===================== #
+.vs/
+
+# ===================== #
+# Build files           #
+# ===================== #
+.XiangQi/
+.game/XiangQi.exe
+.game/XiangQi.pdb
