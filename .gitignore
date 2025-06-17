@@ -6,6 +6,6 @@
 # ===================== #
 # Build files           #
 # ===================== #
-.XiangQi/
-.game/XiangQi.exe
-.game/XiangQi.pdb
+XiangQi/
+game/XiangQi.exe
+game/XiangQi.pdb
