@@ -9,7 +9,7 @@ float deltaTime = GAME_TIME_PER_FRAME;
 
 int main()
 {
-    sf::RenderWindow MainWindow(sf::VideoMode(659, 840), "XiangQi", sf::Style::Titlebar | sf::Style::Close);
+    sf::RenderWindow MainWindow(sf::VideoMode(896, 950), "XiangQi", sf::Style::Titlebar | sf::Style::Close);
     // 设置窗口标题为中文（使用 Windows API）
     SetWindowTextW(MainWindow.getSystemHandle(), L"中国象棋");
 
