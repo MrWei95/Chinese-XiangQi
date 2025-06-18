@@ -1,6 +1,10 @@
 ﻿#include "piece.h"
 #include "main.h"
 
+// ==============================
+// 棋子基本参数
+// ==============================
+
 std::vector<XiangQiPiece> pieces;
 std::map<std::string, sf::Texture> pieceTextures;
 
@@ -151,3 +155,37 @@ std::vector<PieceInitInfo> initialLayout = {
     { XiangQiPiece::Type::Bing,  PieceColor::BLACK, 3, 6 },
     { XiangQiPiece::Type::Bing,  PieceColor::BLACK, 3, 8 },
 };
+
+// ==============================
+// 选中效果
+// ==============================
+
+bool SelectionMarker::load(const std::string& filepath)
+{
+    if (!texture.loadFromFile(filepath))
+    {
+        std::cerr << "无法加载选中框贴图：" << filepath << std::endl;
+        return false;
+    }
+
+    sprite.setTexture(texture);
+    sprite.setOrigin(texture.getSize().x / 2.f, texture.getSize().y / 2.f);
+    return true;
+}
+
+void SelectionMarker::setPosition(const sf::Vector2f& pieceTopLeft)
+{
+    // 棋子左上角 + 40 = 棋子中心（80x80 棋子）
+    sprite.setPosition(pieceTopLeft.x + 40.f, pieceTopLeft.y + 40.f);
+}
+
+void SelectionMarker::setVisible(bool visible)
+{
+    isVisible = visible;
+}
+
+void SelectionMarker::draw(sf::RenderWindow& window) const
+{
+    if (isVisible)
+        window.draw(sprite);
+}

@@ -7,11 +7,6 @@
 
 // 棋盘纹理
 #define     BOARD_TEXTURE_PATH              "./Picture/board.png"
-// 选中纹理
-#define     SELECT_TEXTURE_PATH             "./Picture/select.png"
-// 棋子纹理
-#define     R_JU_TEXTURE_PATH               "./Picture/ju_red.png"
-#define     B_JU_TEXTURE_PATH               "./Picture/ju_black.png"
 
 // 贴图坐标偏移
 #define     PIECE_PIXELOFFSET               40

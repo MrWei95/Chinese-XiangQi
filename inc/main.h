@@ -17,8 +17,8 @@ using namespace sf;
 /**		窗口默认参数		**/
 #define		WINDOW_FPS					60
 #define		WINDOW_TIME_PER_FRAME		0.16F
-#define		MAIN_WINDOW_WIDTH				896
-#define		MAIN_WINDOW_HEIGHT				950
+#define		MAIN_WINDOW_WIDTH			896
+#define		MAIN_WINDOW_HEIGHT			950
 
 
 /**		常用路径		**/
