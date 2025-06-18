@@ -1,49 +1,41 @@
 // 中国象棋 by MrWei95
 #include "main.h"
+#include <filesystem>
+#include <map>
+
+#include "gamesource.h"
 
 // 程序状态（0：退出；1：运行）
 char ProgramRun_Flag = 1;
 
-// 假设每一帧的时间为 16 毫秒（60FPS）
-float deltaTime = GAME_TIME_PER_FRAME;
+// 每一帧的时间
+float deltaTime = WINDOW_TIME_PER_FRAME;
 
 int main()
 {
-    sf::RenderWindow MainWindow(sf::VideoMode(896, 950), "XiangQi", sf::Style::Titlebar | sf::Style::Close);
+    // 这里窗口标题"XiangQi"是占位的
+    // SFML似乎不能设置中文标题
+    sf::RenderWindow MainWindow(sf::VideoMode(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT), 
+                                "XiangQi", 
+                                sf::Style::Titlebar | sf::Style::Close);
     // 设置窗口标题为中文（使用 Windows API）
     SetWindowTextW(MainWindow.getSystemHandle(), L"中国象棋");
 
-    MainWindow.setFramerateLimit(60);
-    MainWindow.setVerticalSyncEnabled(true);
+    MainWindow.setFramerateLimit(WINDOW_FPS);       // 窗口帧数限制
+    MainWindow.setVerticalSyncEnabled(true);        // 窗口垂直同步
+
+    // 设置窗口图标
+    SetWindowIcon(MainWindow, WINDOW_ICON_PATH);
+    // 创建棋盘背景实体
+    sf::Sprite Background_Sprite = CreateEntity("Background", BOARD_TEXTURE_PATH, { 0.f, 0.f });
+
+    sf::Sprite Ju_Red_Sprite = CreateEntity("Ju_R", JU_RED_TEXTURE_PATH, {807 - 40 , 879 - 40});
     
-    // 绘制窗口图标
-    sf::Image MainWindow_icon;
-    if (MainWindow_icon.loadFromFile("./icon/icon.png"))
-    {
-        MainWindow.setIcon(MainWindow_icon.getSize().x, MainWindow_icon.getSize().y, MainWindow_icon.getPixelsPtr());
-    }
-    else
-    {
-        std::cerr << "加载图标失败：resource/icon" << std::endl;
-    }
+    sf::Sprite Ju_Black_Sprite = CreateEntity("Ju_B", JU_BLACK_TEXTURE_PATH, {88 - 40, 70 - 40});
 
-    // 绘制棋盘背景
-    sf::Texture backgroundTexture;
-    if (!backgroundTexture.loadFromFile("Picture/board.png"))
-    {
-        std::cerr << "加载背景失败: resource/background.png\n";
-        return -1;
-    }
-    // 创建背景精灵
-    sf::Sprite backgroundSprite(backgroundTexture);
-    // 设置背景大小为窗口尺寸（拉伸填满）
-    sf::Vector2u textureSize = backgroundTexture.getSize();
-    sf::Vector2u windowSize = MainWindow.getSize();
-    backgroundSprite.setScale(
-        float(windowSize.x) / textureSize.x,
-        float(windowSize.y) / textureSize.y
-    );
+    sf::Sprite Select_Sprite = CreateEntity("Select", SELECT_TEXTURE_PATH, { 807 - 50 , 879 - 50 });
 
+    // 程序主循环
     while (MainWindow.isOpen())
     {
         sf::Event event;
@@ -53,8 +45,12 @@ int main()
                 MainWindow.close();
         }
         MainWindow.clear();
+        MainWindow.draw(Background_Sprite);      // 绘制棋盘背景
 
-        MainWindow.draw(backgroundSprite); // 绘制背景
+        MainWindow.draw(Ju_Red_Sprite);
+        MainWindow.draw(Ju_Black_Sprite);
+        MainWindow.draw(Select_Sprite);
+
         MainWindow.display();
     }
 

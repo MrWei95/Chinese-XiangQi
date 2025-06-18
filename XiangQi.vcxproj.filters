@@ -21,6 +21,9 @@
     <ClInclude Include="inc\main.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="inc\gamesource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -29,6 +32,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gamesource.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
