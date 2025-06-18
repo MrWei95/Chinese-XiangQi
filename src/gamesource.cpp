@@ -3,7 +3,6 @@
 #include <filesystem>
 #include <map>
 
-
 // 设置窗口图标
 void SetWindowIcon(sf::RenderWindow& window_name, const std::string& iconPath)
 {
@@ -17,7 +16,6 @@ void SetWindowIcon(sf::RenderWindow& window_name, const std::string& iconPath)
         std::cerr << "加载窗口图标失败：" << iconPath << std::endl;
     }
 }
-
 
 // 创建实体
 sf::Sprite CreateEntity(const std::string& entityname,

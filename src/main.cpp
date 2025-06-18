@@ -2,8 +2,8 @@
 #include "main.h"
 #include <filesystem>
 #include <map>
-
 #include "gamesource.h"
+#include "piece.h"
 
 // 程序状态（0：退出；1：运行）
 char ProgramRun_Flag = 1;
@@ -29,11 +29,9 @@ int main()
     // 创建棋盘背景实体
     sf::Sprite Background_Sprite = CreateEntity("Background", BOARD_TEXTURE_PATH, { 0.f, 0.f });
 
-    sf::Sprite Ju_Red_Sprite = CreateEntity("Ju_R", JU_RED_TEXTURE_PATH, {807 - 40 , 879 - 40});
-    
-    sf::Sprite Ju_Black_Sprite = CreateEntity("Ju_B", JU_BLACK_TEXTURE_PATH, {88 - 40, 70 - 40});
-
-    sf::Sprite Select_Sprite = CreateEntity("Select", SELECT_TEXTURE_PATH, { 807 - 50 , 879 - 50 });
+    initBoardPixels();          // 预先计算好棋盘的每个交点坐标
+    loadPieceTextures();        // 加载棋子贴图
+    initPieces();               // 初始化棋子
 
     // 程序主循环
     while (MainWindow.isOpen())
@@ -47,9 +45,11 @@ int main()
         MainWindow.clear();
         MainWindow.draw(Background_Sprite);      // 绘制棋盘背景
 
-        MainWindow.draw(Ju_Red_Sprite);
-        MainWindow.draw(Ju_Black_Sprite);
-        MainWindow.draw(Select_Sprite);
+        // 绘制棋子
+        for (const auto& piece : pieces)
+        {
+            MainWindow.draw(piece.getSprite());
+        }
 
         MainWindow.display();
     }

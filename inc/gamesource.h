@@ -10,8 +10,13 @@
 // 选中纹理
 #define     SELECT_TEXTURE_PATH             "./Picture/select.png"
 // 棋子纹理
-#define     JU_RED_TEXTURE_PATH             "./Picture/ju_red.png"
-#define     JU_BLACK_TEXTURE_PATH           "./Picture/ju_black.png"
+#define     R_JU_TEXTURE_PATH               "./Picture/ju_red.png"
+#define     B_JU_TEXTURE_PATH               "./Picture/ju_black.png"
+
+// 贴图坐标偏移
+#define     PIECE_PIXELOFFSET               40
+#define     SELECT_PIXELOFFSET              50
+
 
 // 加载窗口图标
 void SetWindowIcon(sf::RenderWindow& window_name, const std::string& iconPath);
@@ -19,5 +24,6 @@ void SetWindowIcon(sf::RenderWindow& window_name, const std::string& iconPath);
 sf::Sprite CreateEntity(const std::string& entityname,
     const std::string& texturePath,
     const sf::Vector2f& position);
+
 
 #endif
